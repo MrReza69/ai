@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ایجاد گروه</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-green-600 text-white py-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-2xl font-bold">ایجاد گروه</h1>
+        </div>
+    </header>
+    <main class="container mx-auto mt-8 px-4">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="mb-4">
+                    {% for message in messages %}
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">لطفا نام گروه را وارد کنید:</h2>
+            <form action="{{ url_for('create_group') }}" method="post" class="space-y-4">
+                <div>
+                    <label for="group_name" class="block text-sm font-medium text-gray-700">نام گروه:</label>
+                    <input type="text" id="group_name" name="group_name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                </div>
+                <div>
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">ایجاد گروه</button>
+                </div>
+            </form>
+            <div class="mt-6">
+                <a href="{{ url_for('dashboard') }}" class="text-green-500 hover:text-green-700">بازگشت به داشبورد</a>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-green-600 text-white py-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>© عهد جمعی 1403</p>
+        </div>
+    </footer>
+</body>
+</html>

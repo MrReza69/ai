@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست افراد تیک‌نزده</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-green-600 text-white py-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-2xl font-bold">لیست افراد تیک‌نزده</h1>
+        </div>
+    </header>
+    <main class="container mx-auto mt-8 px-4">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">افرادی که امروز تیک نزده‌اند:</h2>
+            <ul class="space-y-2">
+                {% for name in unchecked %}
+                    <li class="bg-gray-50 p-3 rounded-md">{{ name }}</li>
+                {% endfor %}
+            </ul>
+            <div class="mt-6">
+                <a href="{{ url_for('dashboard') }}" class="text-green-500 hover:text-green-700">بازگشت به داشبورد</a>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-green-600 text-white py-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>© عهد جمعی 1403</p>
+        </div>
+    </footer>
+</body>
+</html>
